@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-use CzProject\Markov\NextState;
-use CzProject\Markov\State;
+use CzProject\Markov\Dumper;
 use CzProject\Markov\WordAnalyzer;
 use Tester\Assert;
 
@@ -13,20 +12,21 @@ require __DIR__ . '/../bootstrap.php';
 test('Basic', function () {
 	$analyzer = new WordAnalyzer;
 	$analyzer->analyze(['Hello', 'world']);
-	Assert::equal([
-		new State('Hello', 1, [
-			new NextState('world', 1),
-		]),
-		new State('world', 0, []),
-	], $analyzer->getStates());
+	Assert::same(Tests::unindent("
+		Hello [1]:
+			=> world (1)
+
+		world [0]:
+	"), Dumper::dump($analyzer->getStates()));
 
 	$analyzer->analyze(['Hello', 'man']);
-	Assert::equal([
-		new State('Hello', 1, [
-			new NextState('world', 0.5),
-			new NextState('man', 0.5),
-		]),
-		new State('world', 0, []),
-		new State('man', 0, []),
-	], $analyzer->getStates());
+	Assert::same(Tests::unindent("
+		Hello [1]:
+			=> world (0.5)
+			=> man (0.5)
+
+		world [0]:
+
+		man [0]:
+	"), Dumper::dump($analyzer->getStates()));
 });

@@ -78,4 +78,10 @@
 		{
 			return count($this->nextStates) === 0;
 		}
+
+
+		public function getInitialProbability(): float
+		{
+			return $this->initialProbability;
+		}
 	}
