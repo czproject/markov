@@ -29,4 +29,11 @@ test('Basic', function () {
 
 		man [0]:
 	"), Dumper::dump($analyzer->getStates()));
+
+	Assert::same(Tests::unindent("
+		States: 3
+		Next states [MIN]: 0 (world; man)
+		Next states [MEAN]: 0.67
+		Next states [MAX]: 2 (Hello)
+	"), Dumper::dumpStats($analyzer->getStates()));
 });
