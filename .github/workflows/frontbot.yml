@@ -8,5 +8,7 @@ on:
 jobs:
     frontbot:
         uses: janpecha/actions/.github/workflows/frontbot.yml@master
+        with:
+            committer: "Jan Pecha <janpecha@email.cz>"
         secrets:
             FRONTBOT_TOKEN: ${{ secrets.FRONTBOT_TOKEN }}
