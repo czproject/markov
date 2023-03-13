@@ -7,7 +7,7 @@ require __DIR__ . '/../vendor/autoload.php';
 Tester\Environment::setup();
 
 
-function test(string $caption, $cb)
+function test(string $caption, callable $cb): void
 {
 	$cb();
 }
