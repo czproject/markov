@@ -19,5 +19,3 @@ jobs:
 
     static-analysis:
         uses: janpecha/actions/.github/workflows/phpstan.yml@master
-        with:
-            configFile: tests/phpstan.neon
