@@ -18,7 +18,7 @@ Simple "Markov chains" implementation
 composer require czproject/markov
 ```
 
-CzProject\Markov requires PHP 7.2.0 or later.
+CzProject\Markov requires PHP 7.2 or later.
 
 
 ## Usage
